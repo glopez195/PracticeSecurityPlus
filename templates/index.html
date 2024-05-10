@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <h1>Welcome to the CompTIA Security+ Practice Exam</h1>
+    <h2>Select an Exam to Start</h2>
+    <form action="/start" method="post" class="exam-form">
+        <select name="exam_name" class="exam-select">
+            {% for key in exam_keys %}
+            <option value="{{ key }}">{{ key }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="start-button">Start Exam</button>
+    </form>
+</div>
+{% endblock %}

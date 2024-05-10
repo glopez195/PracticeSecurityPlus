@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Upload File</h1>
+<form id="uploadForm">
+    <input type="file" name="file" required>
+    <button type="submit">Upload</button>
+</form>
+<div id="barContainer">
+    <div id="progressBar"></div>
+</div>
+<script>
+    document.getElementById('uploadForm').onsubmit = function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        fetch('/upload', {
+            method: 'POST',
+            body: formData,
+        }).then(response => {
+            if (response.ok) {
+                checkStatus();  // Start checking status after successful upload
+            }
+        });
+    };
+
+    function checkStatus() {
+        fetch('/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'processing') {
+                    document.getElementById('progressBar').style.width = `${data.progress}%`;
+                    setTimeout(checkStatus, 1000);  // Continue checking every second
+                } else if (data.status === 'complete') {
+                    document.getElementById('progressBar').style.width = '100%';
+                    alert('Processing complete!');
+                }
+            });
+    }
+</script>
+{% endblock % }

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="results">
+    <div>
+        <h1>Results:</h1>
+        <h1 class="{{ 'correct' if result == 'Pass' else 'incorrect' }}">{{result}}</h1>
+    </div>
+    <h2>Your Score: {{ score*10 }}/{{ total*10 }}</h2>
+</div>
+    <ul>
+        {% for entry in history %}
+        <li>{{ entry.question }}<br>
+            Your Answer: {{ entry.user_answers }}<br>
+            Correct Answer: {{ entry.correct_answer }}<br>
+            Explanation: {{ entry.explanation }}<br>
+            Correct: {{ entry.correct }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

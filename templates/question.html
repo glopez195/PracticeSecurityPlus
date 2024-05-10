@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+<form method="post">
+    <div class="question-nav">
+        {% for i in range(total) %}
+        <button class="question-square {{ 'answered' if answered_questions[i] else 'unanswered' }}" type="submit"
+            name="action" value="{{i}}">{{ i + 1 }} </button>
+
+        {% endfor %}
+    </div>
+
+    <h2>{{ question['question'] }}</h2>
+
+    {% for option in question['options'] %}
+        <input type="checkbox" name="answer" value="{{ option[0] }}">{{ option }}<br>
+        {% endfor %}
+        <button class="main-button" type="submit" name="action" value="check">Check Answer</button>
+        {% if current > 1 %}
+        <button class="main-button" type="submit" name="action" value="prev">Previous Question</button>
+        {% endif %}
+        {% if current < total %}
+        <button class="main-button" type="submit" name="action" value="next">Next Question</button>
+        {% else %}
+        <button class="main-button" formaction="{{ url_for('finish') }}" type="submit">Finish Exam</button>
+        {% endif %}
+</form>
+{% if result %}
+<div class="{{ 'correct' if result == 'Correct' else 'incorrect' }}">
+    <strong>Result:</strong> {{ result }}<br>
+    <strong>Explanation:</strong> {{ explanation }}
+</div>
+{% endif %}
+{% endblock %}
