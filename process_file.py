@@ -74,9 +74,9 @@ def main():
 
 def find_pdf():
     """ Find and return the first PDF file in the given directory. """
-    for filename in os.listdir("./uploads"):
+    for filename in os.listdir("./"):
         if filename.lower().endswith('.pdf'):
-            return os.path.join("./uploads/", filename)
+            return os.path.join("./", filename)
     return None  # Return None if no PDF file is found
 
 
