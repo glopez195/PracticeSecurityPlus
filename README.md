@@ -1,4 +1,4 @@
-# Comptia Security+ Practice Exam Application
+# Comptia Security+ 701 Practice Exam Application
 
 This project is designed to facilitate the learning process for those preparing for the CompTIA Security+ certification. It provides a convenient platform to format, track, and interact with the practice exam questions purchased from Professor Messer’s website.
 
