@@ -75,14 +75,15 @@ def question():
         explanation = questions[question_number].get('explanation', '')
         # Append to history and update score if necessary
         if user_answers:
-            if user_answers != correct_answer and question_number not in session['incorrect_answers']:
-                session['incorrect_answers'].append(question_number)
-                session['history'].append({
-                    'question': questions[question_number]['question'],
-                    'correct_answer': correct_answer,
-                    'user_answers': user_answers,
-                    'explanation': explanation
-                })
+            if user_answers != correct_answer:
+                if question_number not in session['incorrect_answers']:
+                    session['incorrect_answers'].append(question_number)
+                    session['history'].append({
+                        'question': questions[question_number]['question'],
+                        'correct_answer': correct_answer,
+                        'user_answers': user_answers,
+                        'explanation': explanation
+                    })
                 session['score'][question_number] = False
             else:
                 result = "Correct"
