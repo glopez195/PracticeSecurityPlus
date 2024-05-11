@@ -10,6 +10,8 @@ Before you use this application, make sure you have purchased the necessary Test
 
 Follow these steps to get the application up and running on your local machine for development and testing purposes.
 
+Walkthrough video: https://youtu.be/QFiKrCNSTFA?si=ezzDwyy4UgeFk9xu
+
 ### Step 1: Clone the Repository
 
 ```bash
